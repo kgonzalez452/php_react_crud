@@ -1,4 +1,5 @@
 <?php
+
 //if the form was submitted
 if($_POST) {
 
@@ -22,10 +23,8 @@ $product->price = $_POST['price'];
 $product->description = $_POST['description'];
 $product->category_id = $_POST['category_id'];
 
+$id = $_POST['del_id'];
 
-
-//create table
-
-echo $product->create() ? 'true' : 'false';
+echo $product->delete($id) ? "true" : "false";
 
 }

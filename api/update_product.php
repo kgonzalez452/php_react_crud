@@ -1,7 +1,4 @@
 <?php
-//if the form was submitted
-if($_POST) {
-
 //include core configuration
 include_once('../config/core.php');
 
@@ -16,16 +13,10 @@ $database = new Database();
 $db = $database->getConnection();
 $product = new Product($db);
 
-//set product property values
-$product->name = $_POST['name'];
-$product->price = $_POST['price'];
-$product->description = $_POST['description'];
-$product->category_id = $_POST['category_id'];
+//read all the products
+$product->id = $_POST['prod_id'];
+$results = $product->readOne();
 
+//output in json format
+echo $results;
 
-
-//create table
-
-echo $product->create() ? 'true' : 'false';
-
-}

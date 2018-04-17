@@ -119,11 +119,30 @@ class Product{
         $stmt->bindParam(':id', $id);
 
         //Execute the query
-        if($stmt->$execute()) {
+        if($stmt->execute()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function delete($id) {
+        $query = "DELETE FROM products
+                    WHERE id=:id";
+
+        $stmt = $this->connect->prepare($query);
+
+        // sanitize
+        $id = htmlspecialchars(strip_tags($this->id));
+        
+        $stmt->bindParam(':id', $id);
+        
+        if($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }
