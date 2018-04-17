@@ -4,7 +4,7 @@ class Database{
     private $host = 'localhost';
     private $db_name = 'php_react_crud';
     private $username = 'root';
-    private $password = 'Extremejello14';
+    private $password = '';
     public $connect;
     
     public function getConnection() {
