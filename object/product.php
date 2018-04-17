@@ -22,6 +22,7 @@ class Product{
             //insert query
             $query = "INSERT INTO products SET name=:name, description=:description, price=:price, category_id=:category_id, created=:created";
 
+            //prepare statement
             $stmt = $this->connect->prepare($query);
 
             // sanitize
@@ -93,6 +94,36 @@ class Product{
         $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return json_encode($results);
+    }
+
+    public function update($id) {
+
+        //update product based on id. 
+        $query = "UPDATE products
+                    SET name=:name, description=:description, price=:price, category_id=:category_id, WHERE id=:id";
+    
+        //prepare statement
+        $stmt = $this->connect->prepare($query);
+
+        // sanitize
+        $name = htmlspecialchars(strip_tags($this->name));
+        $description = htmlspecialchars(strip_tags($this->description));
+        $price = htmlspecialchars(strip_tags($this->price));
+        $category_id = htmlspecialchars(strip_tags($this->category_id));
+
+        //bind parameters
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':category_id', $category_id);
+        $stmt->bindParam(':id', $id);
+
+        //Execute the query
+        if($stmt->$execute()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
