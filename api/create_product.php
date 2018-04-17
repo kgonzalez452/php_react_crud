@@ -13,8 +13,14 @@ $database = new Database();
 $db = $database->getConnection();
 $product = new Product($db);
 
-//read all the products
-$results = $product->readAll();
+//set product property values
+$product->name = $_POST['name'];
+$product->price = $_POST['price'];
+$product->description = $_POST['description'];
+$product->category_id = $_POST['category_id'];
 
-//output in json format
-echo $results;
+
+
+//create table
+
+echo $product->create() ? 'true' : 'false';

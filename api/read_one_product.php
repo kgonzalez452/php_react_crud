@@ -6,7 +6,7 @@ include_once('../config/core.php');
 include_once('../config/database.php');
 
 //product object
-include_once('../object/products.php');
+include_once('../object/product.php');
 
 //class instance
 $database = new Database();
