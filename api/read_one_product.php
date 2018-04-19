@@ -14,7 +14,9 @@ $db = $database->getConnection();
 $product = new Product($db);
 
 //read all the products
-$product->id = $_POST['prod_id'];
+// $product->id = $_POST['prod_id'];
+
+
 $results = $product->readOne();
 
 //output in json format

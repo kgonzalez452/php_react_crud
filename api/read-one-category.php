@@ -14,7 +14,7 @@ $db = $database->getConnection();
 $category = new Category($db);
 
 //read all the categorys
-$category->id = $_POST['prod_id'];
+// $category->id = $_POST['cat_id'];
 $results = $category->readOne();
 
 //output in json format
